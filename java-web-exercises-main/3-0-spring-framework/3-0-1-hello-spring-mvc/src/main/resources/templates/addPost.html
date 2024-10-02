@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Додати новий пост</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css"> <!-- Додаємо стилі, якщо потрібно -->
+</head>
+<body>
+<h1>Додати новий пост</h1>
+<form action="#" th:action="@{/posts}" th:object="${post}" method="post">
+    <label for="title">Заголовок:</label>
+    <input type="text" id="title" th:field="*{title}" required /> <!-- Поле для заголовка -->
+    <br />
+    <label for="text">Зміст:</label>
+    <textarea id="text" th:field="*{text}" required></textarea> <!-- Поле для змісту -->
+    <br />
+    <button type="submit">Додати пост</button>
+</form>
+<a th:href="@{/posts}">Повернутися до списку постів</a>
+</body>
+</html>

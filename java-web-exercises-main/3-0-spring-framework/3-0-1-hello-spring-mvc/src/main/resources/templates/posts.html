@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/style.css}" href="../static/css/style.css">
+    <title>Posts</title>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1 class="title">My Posts</h1>
+        <div class="form_block">
+
+            <form action="#" th:action="@{/posts}" th:method="post">
+                <label for="author_input">Author</label>
+                <input id="author_input" name="author" type="text" placeholder="Enter author name" required>
+
+                <label for="title_input">Title</label>
+                <input id="title_input" name="title" type="text" placeholder="Enter title" required>
+
+                <label for="content_input" id="content_label">Your Post</label>
+                <textarea id="content_input" name="content" placeholder="Your post content" required rows="3"></textarea>
+
+                <input type="submit" value="Add Post" class="input_submit">
+            </form>
+
+        </div>
+    </header>
+
+    <div th:if="${postList.isEmpty()}">Here are no posts yet...</div>
+    <div class="post" th:each="thePost : ${postList}">
+        <div class="title_post" th:text="${thePost.title}">The title</div>
+        <div class="content_post" th:text="${thePost.content}">The content of the post</div>
+        <div class="author_post" th:text="${thePost.author}">Author Name</div>
+        <div class="date_post" th:text="${thePost.createdOn}">Date Created</div>
+    </div>
+</div>
+
+</body>
+</html>
